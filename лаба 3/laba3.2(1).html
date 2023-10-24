@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+
+    <style>
+        div {
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .header {
+            height: 100px;
+            width: 1200px;
+            text-align: center;
+            background: darkorange;
+            border: none; 
+        }
+
+        .footer {
+            height: 100px;
+            width: 1200px;
+            background: darkorange;
+            border: none; 
+        }
+
+        .whit {
+            height: 80px;
+            width: 400px;
+            background: white;
+        }
+
+        .centre {
+            display: flex;
+            height: 400px;
+            width: 1200px;
+        }
+
+        #_2 {
+            height: 400px;
+            width: 400px;
+            background: blue;
+            border: none;
+        }
+
+        #_3 {
+            height: 400px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none; 
+        }
+
+        #_4 {
+            height: 400px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none; 
+        }
+
+        #smallBlueRectangle {
+            width: 280px;
+            height: 330px;
+            background: white;
+            position: relative;
+        }
+
+        #smallBlueRectangle1 {
+            width: 279px;
+            height: 40px;
+            background: red;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #smallBlueRectangle2 {
+            width: 280px;
+            height: 330px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="whit"></div>
+        1
+    </div>
+    <div class="centre">
+        <div id="_2">2</div>
+        <div id="_3">
+            <div id="smallBlueRectangle">3
+                <div id="smallBlueRectangle1">	
+                </div>
+            </div>
+        </div>
+        <div id="_4">
+            <div id="smallBlueRectangle2">4</div>
+        </div>
+    </div>
+    <div class="footer">5</div>
+</body>
+</html>
