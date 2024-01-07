@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Підрахунок тегів</title>
+</head>
+<body>
+    <script>
+        const tweets = [
+            { id: "000", likes: 5, tags: ["js", "nodejs"] },
+            { id: "001", likes: 2, tags: ["html", "css"] },
+            { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+            { id: "003", likes: 8, tags: ["css", "react"] },
+            { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+        ];
+
+        // Функція для підрахунку кількості тегів
+        function countTags(tweetsArray) {
+            const tagCount = {};
+
+            tweetsArray.forEach(tweet => {
+                tweet.tags.forEach(tag => {
+                    tagCount[tag] = (tagCount[tag] || 0) + 1;
+                });
+            });
+
+            return tagCount;
+        }
+
+        // Виведення результату на сторінці
+        const result = countTags(tweets);
+        const resultContainer = document.createElement("div");
+        resultContainer.innerHTML = `<pre>${JSON.stringify(result, null, 4)}</pre>`;
+        document.body.appendChild(resultContainer);
+    </script>
+</body>
+</html>

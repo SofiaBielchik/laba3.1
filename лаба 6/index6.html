@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевірка дужок</title>
+</head>
+<body>
+    <script>
+        // Функція для перевірки правильності закриття дужок
+        function checkBrackets(str) {
+            const stack = [];
+            const brackets = { '(': ')', '{': '}', '[': ']' };
+
+            for (let char of str) {
+                if (brackets[char]) {
+                    // Якщо символ є відкриваючою дужкою, додаємо її в стек
+                    stack.push(char);
+                } else if (Object.values(brackets).includes(char)) {
+                    // Якщо символ є закриваючою дужкою
+                    const lastBracket = stack.pop();
+                    if (brackets[lastBracket] !== char) {
+                        // Перевіряємо, чи відповідає закриваюча дужка останній відкриваючій
+                        return false;
+                    }
+                }
+            }
+
+            // Перевіряємо, чи всі відкриваючі дужки були закриті
+            return stack.length === 0;
+        }
+
+       
+        const code1 = "function someFn() { console.log('Hello World'); }";
+        const code2 = "function someFn() { console.log('Hello World'); }";
+
+      
+        document.write(`<p>Код 1: ${checkBrackets(code1)}</p>`);
+        document.write(`<p>Код 2: ${checkBrackets(code2)}</p>`);
+    </script>
+</body>
+</html>

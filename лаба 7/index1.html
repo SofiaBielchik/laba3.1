@@ -1,0 +1,73 @@
+<!--У звітному HTML-документі створити html-розміту,
+яка складається з наступних елементів : текст, кнопка,
+два інпута (поля введення ).
+
+Після натискання кнопки &quot;SWAP ME&quot; здійснюється
+обмін вмістом між двома інпутами.
+Ви можете натиснути на неї кілька разів або вручну
+змінити вміст інпутів.
+У звітному HTML-документі відобразити скрін
+програмного коду.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зміна місць</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        #container {
+            background-color: green;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        button, input {
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p><b>Завдання 2:</b></p>
+
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" value="Text 1">
+
+        <br> 
+
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" value="Text 2">
+
+        <br> 
+
+        <button onclick="swapInputs()">SWAP ME</button>
+    </div>
+
+    <script>
+        function swapInputs() {
+            // Отримуємо значення інпутів
+            var input1Value = document.getElementById('input1').value;
+            var input2Value = document.getElementById('input2').value;
+
+            // Міняємо значення інпутів місцями
+            document.getElementById('input1').value = input2Value;
+            document.getElementById('input2').value = input1Value;
+        }
+    </script>
+</body>
+</html>
+
+
+

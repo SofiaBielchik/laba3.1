@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медичні знижки</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const medicines = [
+            { id: 1, name: "Ношпа", price: 170 },
+            { id: 2, name: "Aнальгін", price: 55 },
+            { id: 3, name: "Парацетамол", price: 310 },
+            { id: 4, name: "Орасепт", price: 390 },
+        ];
+
+        // Функція для застосування знижки на медикаменти
+        function applyDiscount(medicines) {
+            return medicines.map(medicine => {
+                if (medicine.price > 300) {
+                    return { ...medicine, discountedPrice: 0.7 * medicine.price };
+                } else {
+                    return medicine;
+                }
+            });
+        }
+
+        // Вивід результату на сторінці
+        const outputElement = document.getElementById("output");
+        const discountedMedicines = applyDiscount(medicines);
+
+        discountedMedicines.forEach(medicine => {
+            outputElement.innerHTML += `<p>ID: ${medicine.id}, Назва: ${medicine.name}, Ціна: ${medicine.price}, Ціна зі знижкою: ${medicine.discountedPrice || 'Без знижки'}</p>`;
+        });
+    </script>
+</body>
+</html>

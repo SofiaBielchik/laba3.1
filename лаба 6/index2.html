@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Концерти</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        const concerts = {
+            Київ: new Date("2020-04-01"),
+            Умань: new Date("2025-07-02"),
+            Вінниця: new Date("2020-04-21"),
+            Одеса: new Date("2025-03-15"),
+            Хмельницький: new Date("2020-04-18"),
+            Харків: new Date("2020-07-10"),
+        };
+
+        const citiesArray = Object.keys(concerts);
+        const upcomingCities = citiesArray.filter(city => concerts[city] > new Date());
+        const sortedCities = upcomingCities.sort((cityA, cityB) => concerts[cityA] - concerts[cityB]);
+
+        
+        const resultElement = document.getElementById("result");
+
+        // Виводимо результат на сторінці
+        resultElement.textContent = sortedCities.join(', ');
+    </script>
+</body>
+</html>
+
+

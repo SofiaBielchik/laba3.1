@@ -1,0 +1,63 @@
+<!--У звітному HTML-документі створити html-розміту,
+яка складається з наступних елементів : текст, блок
+(div), дві кнопки
+
+Результат:
+
+Кнопка &quot;Зменшити&quot; робить квадрат менше на 15
+пікселів.
+Повторний натиск на кнопці Зменшити&quot;   робить
+квадрат ще менше на 15 пікселів.
+&quot;Збільшити&quot; – робить квадрат більше на 15 пікселів.
+Повторний натиск на кнопці &quot;Зменшити&quot;   робить
+квадрат ще більше на 15 пікселів.
+У звітному HTML-документі відобразити скрін
+програмного коду.-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квадрат</title>
+    <style>
+        #container {
+            background-color: green;
+            padding: 20px;
+        }
+
+        #square {
+            width: 150px;
+            height: 150px;
+            border: 5px dashed red;
+            margin: 20px;
+            text-align: center;
+            line-height: 150px;
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="container">
+        <p><b>Завдання 4:</b></p>
+        <div id="square"></div>
+        <button onclick="resizeSquare(-15)">Зменшити</button>
+        <button onclick="resizeSquare(15)">Збільшити</button>
+    </div>
+
+    <script>
+        let squareSize = 150;
+
+        function resizeSquare(change) {
+            squareSize += change;
+            document.getElementById('square').style.width = squareSize + 'px';
+            document.getElementById('square').style.height = squareSize + 'px';
+        }
+    </script>
+</body>
+</html>
+
+
+

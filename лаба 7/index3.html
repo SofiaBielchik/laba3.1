@@ -1,0 +1,81 @@
+<!--У звітному HTML-документі створити html-розміту,
+яка складається з наступних елементів : текст,
+маркирований список.
+
+Результат:
+
+Натиснувши кнопку &quot;Подвоїти&quot;, збільшити значення
+у кожному елементі списку у 2 рази. Повторний натиск
+на кнопці &quot;Подвоїти&quot;, також збільшить значення у
+кожному елементі списку у 2 рази
+У звітному HTML-документі відобразити скрін
+програмного коду-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подвоєння</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: flex-start; 
+            justify-content: center;
+        }
+
+        #container {
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p><b>Завдання 6:</b></p>
+        
+        <ul id="myList">
+            <li>1</li>
+            <li>5</li>
+            <li>10</li>
+            <li>20</li>
+        </ul>
+
+        <br>
+
+        <button onclick="doubleValues()">Подвоїти</button>
+    </div>
+
+    <script>
+        function doubleValues() {
+            var listItems = document.getElementById('myList').getElementsByTagName('li');
+            
+            for (var i = 0; i < listItems.length; i++) {
+                var currentValue = parseInt(listItems[i].innerText);
+                listItems[i].innerText = currentValue * 2;
+            }
+        }
+    </script>
+</body>
+</html>

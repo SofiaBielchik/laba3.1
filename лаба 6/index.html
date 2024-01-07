@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук продуктів</title>
+</head>
+<body>
+    <div>
+        <label for="productIdInput">Введіть ID продукту:</label>
+        <input type="text" id="productIdInput">
+        <button onclick="searchProduct()">Пошук</button>
+    </div>
+
+    <div id="resultContainer"></div>
+
+    <script>
+        // Функція для отримання деталей товару
+        function getProductDetails(productId, successCallback, errorCallback) {
+            
+            const products = {
+                '123': { name: 'Хліб', price: 50 },
+                '456': { name: 'Майонез', price: 75 },
+                '987': { name: 'Риба', price: 130 },
+            };
+
+            // Перевіряємо, чи існує товар з вказаним ідентифікатором
+            if (products[productId]) {
+               
+                successCallback(products[productId]);
+            } else {
+                
+                errorCallback('Продукту за таким ID не знайдено');
+            }
+        }
+
+        // Колбек для успішного виклику
+        function onSuccess(details) {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `<p>Назва продукту: ${details.name}</p>
+                                         <p>Ціна: ${details.price}</p>`;
+        }
+
+        // Колбек для виклику в разі помилки
+        function onError(message) {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `<p>Помилка: ${message}</p>`;
+        }
+
+        // Функція для пошуку товару за ідентифікатором
+        function searchProduct() {
+            const productIdInput = document.getElementById('productIdInput');
+            const productId = productIdInput.value;
+
+            getProductDetails(productId, onSuccess, onError);
+        }
+    </script>
+</body>
+</html>
+

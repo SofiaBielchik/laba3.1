@@ -1,0 +1,114 @@
+<!--Напиши скрипт створення й очищення колекції
+елементів з наступним функціоналом.
+Є input, у який користувач вводить бажану кількість
+елементів. Після натискання на кнопку Create має
+рендеритися (додаватися в DOM) колекція з
+відповідною кількістю елементів і очищатися значення
+в інпуті. При повторному натисканні на
+кнопку Create поверх старої колекції має рендеритись
+нова. Після натискання на кнопку Destroy колекція
+елементів має очищатися.
+Після натискання користувачем на
+кнопку Create треба провалідувати значення в input,
+воно має бути в межах від 1 до 100 включно. Тільки
+якщо воно задоволяє умову, мають додаватися
+нові &lt;div&gt; елементи в DOM.
+Для рендеру елементів на сторінці створи
+функцію createBoxes(amount), яка приймає один
+параметр — число, що зберігає кількість елементів для
+рендеру. Функція має створювати
+стільки &lt;div&gt; елементів, скільки вказано
+в параметрі amount і додавати їх у DOM дочірніми
+елементами для div#boxes.
+1. Розміри першого &lt;div&gt; елемента мають бути
+30px на 30px.
+2. Кожен наступний елемент повинен бути ширшим
+і вищим від попереднього на 10px.
+3. Усі елементи повинні мати випадковий колір
+фону. Використовуй готову
+функцію getRandomHexColor() для отримання
+випадкового кольору.
+function getRandomHexColor() {
+return `#${Math.floor(Math.random() *
+16777215)
+.toString(16)
+.padStart(6, 0)}`;
+}
+Для очищення колекції після натискання на
+кнопку Destroy створи функцію destroyBoxes(), яка
+очищає вміст div#boxes, у такий спосіб видаляючи всі
+створені елементи.-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <title>Кольорові квадратики</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #boxes {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #boxes > div {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        function getRandomHexColor() {
+            return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+        }
+
+        function createBoxes(amount) {
+            const boxesContainer = document.getElementById('boxes');
+            for (let i = 0; i < amount; i++) {
+                const box = document.createElement('div');
+                box.style.width = `${30 + i * 10}px`;
+                box.style.height = `${30 + i * 10}px`;
+                box.style.backgroundColor = getRandomHexColor();
+                boxesContainer.appendChild(box);
+            }
+        }
+
+        function destroyBoxes() {
+            const boxesContainer = document.getElementById('boxes');
+            boxesContainer.innerHTML = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const createButton = document.querySelector('[data-create]');
+            const destroyButton = document.querySelector('[data-destroy]');
+            const input = document.querySelector('input');
+
+            createButton.addEventListener('click', function () {
+                const amount = parseInt(input.value);
+                if (amount >= 1 && amount <= 100) {
+                    createBoxes(amount);
+                    input.value = '';
+                } else {
+                    alert('Please enter a number between 1 and 100.');
+                }
+            });
+
+            destroyButton.addEventListener('click', function () {
+                destroyBoxes();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="controls">
+        <input type="number" min="1" max="100" step="1" />
+        <button type="button" data-create>Create</button>
+        <button type="button" data-destroy>Destroy</button>
+    </div>
+    <div id="boxes"></div>
+</body>
+</html>
